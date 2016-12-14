@@ -46,5 +46,6 @@ function gameloop(){
 
 	drawBackground();
 	ane.draw(); //绘制海葵
+	fruitMonitor();
 	fruit.draw(); //绘制果实
 }
