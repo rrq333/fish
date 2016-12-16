@@ -12,11 +12,11 @@ var fruitObj = function(){
 fruitObj.prototype.num = 30;
 
 fruitObj.prototype.init = function(){
-	// this.orange.src = "img/fruit.png";
-	// this.blue.src = "img/blue.png";
+	this.orange.src = "img/fruit.png";
+	this.blue.src = "img/blue.png";
 
-	this.orange.src = "img/001.png";
-	this.blue.src = "img/002.png";
+	// this.orange.src = "img/001.png";
+	// this.blue.src = "img/002.png";
 	
 
 	for(var i=0;i<this.num;i++){
@@ -59,7 +59,7 @@ fruitObj.prototype.born = function(i){
 	this.alive[i] = true;
 
 	var ran = Math.random();
-	if(ran < 0.5){
+	if(ran < 0.2){
 		this.fruitType[i] = "blue";
 	}else{
 		this.fruitType[i] = "orange";
