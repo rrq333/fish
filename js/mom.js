@@ -18,8 +18,8 @@ momObj.prototype.init = function(){
 
 momObj.prototype.draw = function(){
 	// lerp x,y
-	this.x = lerpDistance(mx,this.x,0.9);
-	this.y = lerpDistance(my,this.y,0.9);
+	this.x = lerpDistance(mx,this.x,0.98);
+	this.y = lerpDistance(my,this.y,0.98);
 
 	// delta angle
 	// Math.atan2(y,x)
@@ -34,9 +34,9 @@ momObj.prototype.draw = function(){
 	ctx1.save();
 	ctx1.translate(this.x,this.y);
 	ctx1.rotate(this.angle);
-	ctx1.drawImage(this.bigEye, -this.bigEye.width * 0.5, -this.bigEye.height * 0.5);
-	ctx1.drawImage(this.bigBody,-this.bigBody.width * 0.5, -this.bigBody.height * 0.5);
 	ctx1.drawImage(this.bigTail,-this.bigTail.width * 0.5+30, -this.bigTail.height * 0.5);
+	ctx1.drawImage(this.bigBody,-this.bigBody.width * 0.5, -this.bigBody.height * 0.5);
+	ctx1.drawImage(this.bigEye, -this.bigEye.width * 0.5, -this.bigEye.height * 0.5);
 
 	ctx1.restore();
 }

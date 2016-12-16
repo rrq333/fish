@@ -9,6 +9,7 @@ var canWidth,canHeight;
 var ane; //海葵
 var fruit; //果实
 var mom; //大鱼
+var baby; //小鱼
 
 var mx,my; //鼠标坐标
 
@@ -45,6 +46,9 @@ function init(){
 	mom = new momObj();
 	mom.init();
 
+	baby = new babyObj();
+	baby.init();
+
 	mx = canWidth * 0.5;
 	my = canHeight * 0.5;
 }
@@ -65,6 +69,8 @@ function gameloop(){
 	mom.draw();
 
 	Collision();
+
+	baby.draw();
 }
 
 function onMouseMove(e){
