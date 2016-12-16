@@ -54,6 +54,7 @@ function gameloop(){
 	var now = Date.now();
 	deltaTime = now - lastTime;
 	lastTime = now;
+	if(deltaTime>40) deltaTime = 40;
 
 	drawBackground();
 	ane.draw(); //绘制海葵
@@ -62,6 +63,8 @@ function gameloop(){
 
 	ctx1.clearRect(0,0,canWidth,canHeight); //清空画布
 	mom.draw();
+
+	Collision();
 }
 
 function onMouseMove(e){
