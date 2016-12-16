@@ -13,6 +13,21 @@ var baby; //小鱼
 
 var mx,my; //鼠标坐标
 
+var babyTail = [];
+var babyEye = [];
+var babyBody = [];
+
+var momTail = [];
+var momEye = [];
+
+var data;
+
+var wave;
+var halo;
+
+var momBodyOra = [];
+var momBodyBlue = [];
+
 $(function(){
 	game();
 })
@@ -30,6 +45,9 @@ function init(){
 	ctx1 = can1.getContext('2d');
 	can2 = document.getElementById('canvas2'); //background, ane ,fruits 后面一层
 	ctx2 = can2.getContext('2d');
+
+	ctx1.font = "30px Verdana";
+	ctx1.textAlign = "center";
 
 	can1.addEventListener('mousemove',onMouseMove,false);
 
@@ -51,6 +69,46 @@ function init(){
 
 	mx = canWidth * 0.5;
 	my = canHeight * 0.5;
+
+	for(var i=0;i<8;i++){
+		babyTail[i] = new Image();
+		babyTail[i].src = "img/babyTail"+i+".png";
+	}
+
+	for(var i=0;i<2;i++){
+		babyEye[i] = new Image();
+		babyEye[i].src = "img/babyEye"+i+".png";
+	}
+
+	for(var i=0;i<20;i++){
+		babyBody[i] = new Image();
+		babyBody[i].src="img/babyFade"+i+".png";
+	}
+
+	for(var i=0;i<8;i++){
+		momTail[i] = new Image();
+		momTail[i].src = "img/bigTail"+i+".png";
+	}
+
+	for(var i=0;i<2;i++){
+		momEye[i] = new Image();
+		momEye[i].src = "img/bigEye"+i+".png";
+	}
+
+	data = new dataObj();
+
+	for(var i=0;i<8;i++){
+		momBodyOra[i] = new Image();
+		momBodyOra[i].src="img/bigSwim"+i+".png";
+		momBodyBlue[i] = new Image();
+		momBodyBlue[i].src = "img/bigSwimBlue"+i+".png";
+	}
+
+	wave = new waveObj();
+	wave.init();
+
+	halo = new haloObj();
+	halo.init();
 }
 
 function gameloop(){
@@ -68,14 +126,20 @@ function gameloop(){
 	ctx1.clearRect(0,0,canWidth,canHeight); //清空画布
 	mom.draw();
 
-	Collision();
+	momFruitsCollision();
+	momBabyCollision();
 
 	baby.draw();
+	data.draw();
+	wave.draw();
+	halo.draw();
 }
 
 function onMouseMove(e){
-	if(e.offSetX || e.layerX){
-		mx = e.offSetX == undefined ? e.layerX : e.offSetX;
-		my = e.offSetY == undefined ? e.layerY : e.offSetY;
+	if(!data.gameOver){
+		if(e.offSetX || e.layerX){
+			mx = e.offSetX == undefined ? e.layerX : e.offSetX;
+			my = e.offSetY == undefined ? e.layerY : e.offSetY;
+		}
 	}
 }
