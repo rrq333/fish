@@ -22,8 +22,11 @@ var momEye = [];
 
 var data;
 
-var wave;
-var halo;
+var wave; //大鱼波纹
+var halo;//大鱼碰撞小鱼波纹
+var dust; //漂浮物
+
+var dustPic = [];
 
 var momBodyOra = [];
 var momBodyBlue = [];
@@ -109,6 +112,13 @@ function init(){
 
 	halo = new haloObj();
 	halo.init();
+
+	for(var i=0;i<7;i++){
+		dustPic[i] = new Image();
+		dustPic[i].src = "img/dust"+i+".png";
+	}
+	dust = new dustObj();
+	dust.init();
 }
 
 function gameloop(){
@@ -133,6 +143,7 @@ function gameloop(){
 	data.draw();
 	wave.draw();
 	halo.draw();
+	dust.draw();
 }
 
 function onMouseMove(e){
